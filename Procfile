@@ -1,1 +1,1 @@
-worker: python bot-18.py
+worker: python bot-26.py
