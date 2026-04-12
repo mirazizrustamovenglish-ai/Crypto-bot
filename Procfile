@@ -1,1 +1,1 @@
-python crypto_signal_advanced_bot.py
+python crypto_signal_bot_advanced.py
