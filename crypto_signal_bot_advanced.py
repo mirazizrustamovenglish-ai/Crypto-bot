@@ -1,3 +1,46 @@
+import sys
+import subprocess
+import os
+
+# Auto-install ccxt agar yo'q bo'lsa
+try:
+    import ccxt
+    print(f"✅ ccxt version: {ccxt.__version__}")
+except ImportError:
+    print("⚠️ ccxt topilmadi, o'rnatilmoqda...")
+    subprocess.check_call([sys.executable, "-m", "pip", "install", "ccxt==4.2.25"])
+    import ccxt
+    print(f"✅ ccxt o'rnatildi: {ccxt.__version__}")
+
+# Auto-install boshqa kutubxonalar
+packages = {
+    'pandas': '2.1.4',
+    'numpy': '1.26.3', 
+    'requests': '2.31.0',
+    'ta': '0.11.0'
+}
+
+for package, version in packages.items():
+    try:
+        __import__(package)
+        print(f"✅ {package} mavjud")
+    except ImportError:
+        print(f"⚠️ {package} o'rnatilmoqda...")
+        subprocess.check_call([sys.executable, "-m", "pip", "install", f"{package}=={version}"])
+        print(f"✅ {package} o'rnatildi")
+
+# Endi import qilish
+import pandas as pd
+import numpy as np
+import requests
+from datetime import datetime
+import time
+import ta
+from ta.trend import ADXIndicator, MACD
+from ta.momentum import RSIIndicator
+import logging
+
+# Qolgan kod...
 import ccxt
 import pandas as pd
 import numpy as np
