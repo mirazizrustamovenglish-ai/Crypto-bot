@@ -9,4 +9,4 @@ RUN pip install --upgrade pip && \
 
 COPY . .
 
-CMD ["python", "crypto_signal_bot_pro.py"]
+CMD ["python", "crypto_signal_bot_ultima.py"]
