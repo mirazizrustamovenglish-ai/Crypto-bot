@@ -1,1 +1,1 @@
-worker: python bot-14.py
+python crypto_signal_bot.py
