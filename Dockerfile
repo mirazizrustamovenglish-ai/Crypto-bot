@@ -1,12 +1,14 @@
-FROM python:3.11
+FROM python:3.11-slim
 
 WORKDIR /app
 
-COPY requirements.txt .
+RUN apt-get update && apt-get install -y gcc g++ && rm -rf /var/lib/apt/lists/*
 
-RUN pip install --upgrade pip && \
-    pip install ccxt pandas numpy requests ta
+COPY requirements.txt .
+RUN pip install --no-cache-dir --upgrade pip && pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-CMD ["python", "crypto_signal_bot_ultimate.py"]
+RUN mkdir -p charts
+
+CMD ["python", "-u", "crypto_signal_bot_pro_ultimate.py"]
